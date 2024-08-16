@@ -1,34 +1,28 @@
 function convertToRoman(num) {
-  	const obj = {
-      0:['M',1000], 
-      1:['D', 500], 
-      2:['C', 100], 
-      3:['L', 50], 
-      4:['X', 10], 
-      5:['V', 5], 
-      6:['I', 1]
-    };
+  	const obj = [
+        ['M', 1000],
+        ['CM', 900],
+        ['D', 500],
+        ['CD', 400],
+        ['C', 100],
+        ['XC', 90],
+        ['L', 50],
+        ['XL', 40],
+        ['X', 10],
+        ['IX', 9],
+        ['V', 5],
+        ['IV', 4],
+        ['I', 1]
+    ];
 
-  //your code here
-	let result = '';
-	for(let i=0; i<Object.keys(obj).length; i++){
-		while(num >= obj[i][1] && num != 4){
-			result += obj[i][0];
-			num -= obj[i][1];
-		}
-		if(num >= obj[i][1] && num === 4){
-			result += obj[i][0] + obj[i-1][0];
-			num -= obj[i][1];
-		}
-		if(i < 5){
-			let substractiveNum = obj[i][1] - obj[i+2][1];
-			if(num >= substractiveNum){
-				result += obj[i+2][0] + obj[i][0];
-				num -= substractiveNum;
-			}
-		}	
-	}
-	return result;
+    let result = '';
+    for(let i = 0; i < obj.length; i++) {
+        while(num >= obj[i][1]) {
+            result += obj[i][0];
+            num -= obj[i][1];
+        }
+    }
+    return result;
 }
 // You can test your code by running the above function and printing it to console by pressing the run button at the top. To run it with input 36, uncomment the following line
 
