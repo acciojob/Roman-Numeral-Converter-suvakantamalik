@@ -17,10 +17,10 @@ function convertToRoman(num) {
 			num -= obj[i][1];
 		}
 		if(num >= obj[i][1] && num === 4){
-			result += obj[i][0] + obj[i-2][0];
+			result += obj[i][0] + obj[i-1][0];
 			num -= obj[i][1];
 		}
-		if(i<){
+		if(i < 5){
 			let substractiveNum = obj[i][1] - obj[i+2][1];
 			if(num >= substractiveNum){
 				result += obj[i+2][0] + obj[i][0];
