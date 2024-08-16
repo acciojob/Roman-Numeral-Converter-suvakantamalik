@@ -11,35 +11,24 @@ function convertToRoman(num) {
 
   //your code here
 	let result = '';
-	while (num > 0) {
-		let firstDigit = getFirstDigit(num);
-		let firstPosition = getFirstPosition(num);
-		num = removeFirstDigit(num);
-		
-		
+	for(let i=0; i<Object.keys(obj).length; i++){
+		while(num >= obj[i][1]){
+			result += obj[i][0];
+			num -= obj[i][1];
+		}
+		if(i%2 === 0 && i < Object.keys(obj).length-2){
+			let substractiveNum = obj[i][1] - obj[i+2][1];
+			if(num >= substractiveNum){
+				result += obj[i+2][0] + obj[i][0];
+				num -= substractiveNum;
+			}
+		}	
 	}
-	function getFirstDigit(number){
-	  while(number >= 10){
-	    number = Math.floor(number / 10);
-	  }
-	  return number;
-	}
-	function getFirstPosition(number){
-	  let position = 1; // Calculate the number of digits minus one
-	  while(number >= 10){
-	    number /= 10;
-	    position *= 10;
-	  }
-	  return position;
-	}
-	function removeFirstDigit(number){
-	  let position = getFirstPosition(number);
-	  return number % position;
-	}
+	return result;
 }
 // You can test your code by running the above function and printing it to console by pressing the run button at the top. To run it with input 36, uncomment the following line
 
-// console.log(convertToRoman(36));
+console.log(convertToRoman(36)); 
 
 // do not edit below this line
 module.exports = convertToRoman
